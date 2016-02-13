@@ -459,11 +459,11 @@ function getVideo(PlayList,startTime)
     for(var i=1;i<simulength-1;i++)
     {
         if(current_seconds<simuarr[i]&&current_seconds>simuarr[i-1]){
-        vidob['video']=i;
+        vidob['video']=PlayList[i];
             break;
         }
         else{
-            vidob['video']=0;
+            vidob['video']=PlayList[0];
         }
     }
     
