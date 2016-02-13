@@ -493,12 +493,13 @@ $(document).ready(function()
     sdd
     
     );
+    console.log(startwhen);
 });
 }
 
 
 /* -------------------------------------------- PLAY PARAMETERS ----------------------------------------------*/
-var startTime="19:58:00";
+var startTime="20:28:00";
 
 PlaySimulate(PlayList,startTime);
 var vidpar=getVideo(PlayList,startTime);
@@ -524,6 +525,6 @@ function refresh_playid(PlayList,startTime,vidpar)
 }
 
 
-//var tsecloop = setInterval(function(){refresh_playid(PlayList,startTime,vidpar)};,3000);
+var tsecloop = setInterval(function(){refresh_playid(PlayList,startTime,vidpar)};,3000);
 
 
