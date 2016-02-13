@@ -335,7 +335,7 @@ var VideoData={
 
 
 
-var PlayList=[32,31,30,35,38,50,18];
+var PlayList=[48,52,58,54,42,50,47,60,59,12,15,9,18,36,19];
 
 
 
@@ -535,7 +535,7 @@ $(document).ready(function()
 
 
 /* -------------------------------------------- PLAY PARAMETERS ----------------------------------------------*/
-var startTime="21:45:00";
+var startTime="22:00:00";
 
 PlaySimulate(PlayList,startTime);
 var vidpar=getVideo(PlayList,startTime);
