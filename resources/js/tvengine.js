@@ -346,7 +346,7 @@ var PlayList=[60,59,58,57,56,55,54,53,52,51,50,49];
 /* --------------------------------------------------------------- TIME FUNCTIONS ----------------------------------------------*/
 
 function getHoursVD(duration){
-    console.log(duration);
+   // console.log(duration);
    
     return duration[0]+duration[1];
     
@@ -426,7 +426,7 @@ function PlaySimulate(PlayList,startTime){
      
         simupar=simupar+getSecondsDuration(VideoData[PlayList[i]]['duration']);
         simuarr[i]=simupar;
-        //console.log(simupar);
+        console.log(getDurationSeconds(simupar));
         
     }
     
