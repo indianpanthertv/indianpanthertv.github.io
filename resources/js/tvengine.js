@@ -525,6 +525,6 @@ function refresh_playid(PlayList,startTime,vidpar)
 }
 
 
-var tsecloop = setInterval(function(){refresh_playid(PlayList,startTime,vidpar)};,3000);
+var tsecloop = setInterval(refresh_playid(PlayList,startTime,vidpar),3000);
 
 
