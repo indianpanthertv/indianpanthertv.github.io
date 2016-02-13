@@ -381,6 +381,7 @@ return duration[6]+duration[7];
 function getDurationSeconds(endTimesec) //endTimesec is just a variable to indicate dur in seconds 
 {
     var hour=parseInt(endTimesec/3600);
+    
     hour = (hour < 10 ? "0" : "") + hour;
     var minutes=parseInt((endTimesec-parseInt(endTimesec/3600)*3600)/60);
      minutes = (minutes < 10 ? "0" : "") + minutes;
@@ -459,10 +460,10 @@ function GetSchedule(PlayList,startTime){
         simuarr[i]=simupar;
         if(i==0)
         {
-        console.log(VideoData[PlayList[i]]['title']+'\n From :'+getDurationSeconds(getSecondsDuration(startTime))+' TO :'+getDurationSeconds(simupar+getSecondsDuration(startTime)));
+        console.log(VideoData[PlayList[i]]['title']+'\n From '+getDurationSeconds(getSecondsDuration(startTime))+' TO '+getDurationSeconds(simupar+getSecondsDuration(startTime)));
         }
         else{
-             console.log(VideoData[PlayList[i]]['title']+'\n From :'+getDurationSeconds(getSecondsDuration(startTime)+simuarr[i-1])+' TO :'+getDurationSeconds(simupar+getSecondsDuration(startTime)));
+             console.log(VideoData[PlayList[i]]['title']+'\n From '+getDurationSeconds(getSecondsDuration(startTime)+simuarr[i-1])+' TO '+getDurationSeconds(simupar+getSecondsDuration(startTime)));
         }
     }
     
@@ -486,6 +487,14 @@ function getVideo(PlayList,startTime)
     var start_seconds=getSecondsDuration(startTime);
     //console.log(startTime+"is startTime");
     var current_seconds=pres_seconds-start_seconds;
+    if(current_seconds<0)
+    {
+        hour=parseInt(hour)+1;
+         var prestime= hour+":"+minutes+":"+seconds;
+        pres_seconds=getSecondsDuration(prestime);
+        start_seconds=getSecondsDuration(startTime);
+        current_seconds=pres_seconds-start_seconds;
+    }
     
     var simuarr=PlaySimulate(PlayList,startTime);
     var simulength=simuarr.length;
