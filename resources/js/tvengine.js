@@ -335,7 +335,7 @@ var VideoData={
 
 
 
-var PlayList=[60,59,58,57,56,55,54,53,52,51,50,49];
+var PlayList=[32,31,30,35,38,50,18];
 
 
 
@@ -501,7 +501,7 @@ $(document).ready(function()
 
 
 /* -------------------------------------------- PLAY PARAMETERS ----------------------------------------------*/
-var startTime="20:28:00";
+var startTime="20:45:00";
 
 PlaySimulate(PlayList,startTime);
 var vidpar=getVideo(PlayList,startTime);
@@ -516,6 +516,7 @@ Set_Watch_Video(VideoData,vidpar);
 
 function refresh_playid(PlayList,startTime,vidpar)
 {
+    console.log("running per 3 secs");
     PlaySimulate(PlayList,startTime);
  var vidparloc=getVideo(PlayList,startTime);
     if(vidpar['video']!=vidparloc['video'])
@@ -527,6 +528,6 @@ function refresh_playid(PlayList,startTime,vidpar)
 }
 
 
-var tsecloop = setInterval(refresh_playid(PlayList,startTime,vidpar),3000);
+ setInterval(function(){refresh_playid(PlayList,startTime,vidpar)},3000);
 
 
