@@ -456,10 +456,12 @@ function getVideo(PlayList,startTime)
     var simuarr=PlaySimulate(PlayList,startTime);
     var simulength=simuarr.length;
     var vidob={};
+    var logi=0;
     for(var i=1;i<simulength-1;i++)
     {
         if(current_seconds<simuarr[i]&&current_seconds>simuarr[i-1]){
         vidob['video']=PlayList[i];
+            logi=i;
             break;
         }
         else{
@@ -467,7 +469,7 @@ function getVideo(PlayList,startTime)
         }
     }
     
-    vidob['start']=current_seconds-simuarr[vidob['video']-1];
+    vidob['start']=current_seconds-simuarr[logi-1];
     return vidob;
     
     
