@@ -228,7 +228,7 @@ $(document).ready(function()
     console.log(Schema);
     var play = VideoData[vidpar['video']]['link'];
     var startwhen=vidpar['star'];
-    var sdd=' <iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list='+play+'&autoplay=1&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&start='+startwhen+'" frameborder="0" allowfullscreen></iframe>';
+    var sdd=' <iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+play+'?autoplay=1&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&start='+startwhen+'" frameborder="0" allowfullscreen></iframe>';
     $("#INDIANPANTHERTV").html(
     
     sdd
