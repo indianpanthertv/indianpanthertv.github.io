@@ -452,7 +452,7 @@ function GetSchedule(PlayList,startTime){
      
         simupar=simupar+getSecondsDuration(VideoData[PlayList[i]]['duration']);
         //simuarr[i]=simupar;
-        console.log(VideoData[PlayList[i]]['link']+'\n'+getDurationSeconds(simupar+getSecondsDuration(startTime)));
+        console.log(VideoData[PlayList[i]]['title']+'\n'+getDurationSeconds(simupar+getSecondsDuration(startTime)));
         
     }
     
