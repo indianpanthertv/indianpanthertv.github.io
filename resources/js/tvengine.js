@@ -489,7 +489,7 @@ function getVideo(PlayList,startTime)
     var current_seconds=pres_seconds-start_seconds;
     if(current_seconds<0)
     {
-        hour=parseInt(hour)+1;
+        hour=parseInt(hour)+24;
          var prestime= hour+":"+minutes+":"+seconds;
         pres_seconds=getSecondsDuration(prestime);
         start_seconds=getSecondsDuration(startTime);
