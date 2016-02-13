@@ -105,8 +105,14 @@ return duration[6]+duration[7];
 
 function getDurationSeconds(endTimesec) //endTimesec is just a variable to indicate dur in seconds 
 {
+    var hour=parseInt(endTimesec/3600);
+    hour = (hour < 10 ? "0" : "") + hour;
+    var minutes=parseInt((endTimesec-parseInt(endTimesec/3600)*3600)/60);
+     minutes = (minutes < 10 ? "0" : "") + minutes;
+  var seconds=  parseInt((endTimesec-parseInt(endTimesec/3600)*3600)%60);
+     seconds = (seconds < 10 ? "0" : "") + seconds;
     
-    var endTime=parseInt(endTimesec/3600)+":"+parseInt((endTimesec-parseInt(endTimesec/3600)*3600)/60)+":"+parseInt((endTimesec-parseInt(endTimesec/3600)*3600)%60);
+    var endTime=hour+":"+minutes+":"+seconds;
     return endTime;
 }
 
@@ -193,7 +199,7 @@ function getVideo(PlayList,startTime)
 }
 
 /* -------------------------------------------- PLAY PARAMETERS ----------------------------------------------*/
-var startTime="17:52:00";
+var startTime="18:02:00";
 
 PlaySimulate(PlayList,startTime);
 var vidpar=getVideo(PlayList,startTime);
@@ -228,7 +234,7 @@ $(document).ready(function()
     console.log(Schema);
     var play = VideoData[vidpar['video']]['link'];
     var startwhen=vidpar['start'];
-    var sdd=' <iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+play+'?autoplay=1&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&start='+startwhen+'&version=3" frameborder="0" allowfullscreen></iframe>';
+    var sdd=' <iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+play+'?autoplay=1&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&t='+startwhen+'&version=3" frameborder="0" allowfullscreen></iframe>';
     $("#INDIANPANTHERTV").html(
     
     sdd
