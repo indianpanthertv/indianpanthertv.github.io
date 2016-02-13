@@ -35,6 +35,183 @@ var SchemaHour ={
 
 };
 
+
+
+
+var VideoData={
+    
+    /*  */
+    
+    0 : {
+        
+        link:'7QU1nvuxaMA',title:'Audioslave - Like a Stone (Official Video)',duration:'00:04:59'
+        
+    },
+    1 : {
+        
+        link:'Mdo_A1Bj67w',title:'Tare Zameen par - Maa- (High Definition)',duration:'00:05:51'
+    },
+    2 : {
+        
+        link:'7oYqanTWruE',title:'Mera Jahan',duration:'00:06:02'
+    }
+    
+   
+};
+
+
+/* --------------------------------------------------------------- PLAY LIST ----------------------------------------------*/
+
+
+
+
+PlayList=[1,2,0];
+
+
+
+/* --------------------------------------------------------------- PLAY LIST ----------------------------------------------*/
+
+
+
+/* --------------------------------------------------------------- TIME FUNCTIONS ----------------------------------------------*/
+
+function getHoursVD(duration){
+    
+   
+    return duration[0]+duration[1];
+    
+}
+
+function getMinutesVD(duration){
+
+
+
+return duration[3]+duration[4];
+
+
+}
+
+function getSecondsVD(duration){
+
+
+
+return duration[6]+duration[7];
+
+
+}
+
+
+
+
+function getDurationSeconds(endTimesec) //endTimesec is just a variable to indicate dur in seconds 
+{
+    
+    var endTime=parseInt(endTimesec/3600)+":"+parseInt((endTimesec-parseInt(endTimesec/3600)*3600)/60)+":"+parseInt((endTimesec-parseInt(endTimesec/3600)*3600)%60);
+    return endTime;
+}
+
+
+
+function getSecondsDuration(duration){
+
+    
+  return  parseInt(getHoursVD(duration))*3600+parseInt(getMinutesVD(duration))*60+parseInt(getSecondsVD(duration));
+
+}
+
+/* -------------------------------------------------------------------------------------------*/
+function PLduration(PlayList){
+    
+    var PLlength= PlayList.length;
+    var duration=0;
+    for(var i=0;i<PLlength;i++)
+    {
+        var video=VideoData[PlayList[i]];
+        duration=duration+getSecondsDuration(video['duration']);
+    }
+    return duration;
+}
+
+function PlaySimulate(PlayList,startTime){
+
+   // console.log(getSecondsDuration(startTime)+PLduration(PlayList));
+    var endTimesec=getSecondsDuration(startTime)+PLduration(PlayList);
+    
+    var endTime=getDurationSeconds(endTimesec);
+    console.log(endTime + "is the ending time");
+    
+    var simulength=PlayList.length;
+    var simupar=0;
+    
+    var simuarr = Array(simulength);
+    
+    for(var i=0;i<simulength;i++)
+    {
+     
+        simupar=simupar+getSecondsDuration(VideoData[PlayList[i]]['duration']);
+        simuarr[i]=simupar;
+        //console.log(simupar);
+        
+    }
+    
+    return simuarr;
+    
+}
+
+function getVideo(PlayList,startTime)
+{
+    var time= new Date();
+   
+    var hour = time.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+     var minutes = time.getMinutes();
+   minutes = (minutes < 10 ? "0" : "") + minutes;
+     var seconds = time.getSeconds();
+    seconds = (seconds < 10 ? "0" : "") + seconds;
+    
+    var prestime= hour+":"+minutes+":"+seconds;
+    
+    var pres_seconds=getSecondsDuration(prestime);
+    var start_seconds=getSecondsDuration(startTime);
+    var current_seconds=pres_seconds-start_seconds;
+    
+    var simuarr=PlaySimulate(PlayList,startTime);
+    var simulength=simuarr.length;
+    var vidob={};
+    for(var i=1;i<simulength-1;i++)
+    {
+        if(current_seconds<simuarr[i]&&current_seconds>simuarr[i-1]){
+        vidob['video']=i;}
+        else{
+            vidob['video']=0;}
+    }
+    
+    vidob['start']=current_seconds-simuarr[vidob['video']-1];
+    return vidob;
+    
+    
+}
+
+/* -------------------------------------------- PLAY PARAMETERS ----------------------------------------------*/
+var startTime="17:32:00";
+
+PlaySimulate(PlayList,startTime);
+var vidpar=getVideo(PlayList,startTime);
+
+
+
+
+
+/*-----------------------------------------------------------------------------------------------------------*/
+
+function refresh_playid()
+{
+    var date = new Date();
+    
+}
+
+
+
 var date = new Date();
 
 var hour = date.getHours();
@@ -49,8 +226,9 @@ var Schema = 'PL'+hour+next;
 $(document).ready(function()
 {
     console.log(Schema);
-    var play = SchemaHour[Schema];
-    var sdd=' <iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list='+play+'&autoplay=1&controls=0&showinfo=0&autohide=1&modestbranding=1" frameborder="0" allowfullscreen></iframe>';
+    var play = VideoData[vidpar['video']]['link'];
+    var startwhen=vidpar['star'];
+    var sdd=' <iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list='+play+'&autoplay=1&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&start='+startwhen+'" frameborder="0" allowfullscreen></iframe>';
     $("#INDIANPANTHERTV").html(
     
     sdd
