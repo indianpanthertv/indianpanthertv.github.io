@@ -335,7 +335,7 @@ var VideoData={
 
 
 
-PlayList=[60,59,58,57,56,55,54,53,52,51,50,49];
+var PlayList=[60,59,58,57,56,55,54,53,52,51,50,49];
 
 
 
@@ -346,7 +346,7 @@ PlayList=[60,59,58,57,56,55,54,53,52,51,50,49];
 /* --------------------------------------------------------------- TIME FUNCTIONS ----------------------------------------------*/
 
 function getHoursVD(duration){
-    
+    console.log(duration);
    
     return duration[0]+duration[1];
     
@@ -448,7 +448,9 @@ function getVideo(PlayList,startTime)
     var prestime= hour+":"+minutes+":"+seconds;
     
     var pres_seconds=getSecondsDuration(prestime);
+    console.log(pres_seconds+"is pres_seconds");
     var start_seconds=getSecondsDuration(startTime);
+    console.log(startTime+"is startTime");
     var current_seconds=pres_seconds-start_seconds;
     
     var simuarr=PlaySimulate(PlayList,startTime);
@@ -457,9 +459,12 @@ function getVideo(PlayList,startTime)
     for(var i=1;i<simulength-1;i++)
     {
         if(current_seconds<simuarr[i]&&current_seconds>simuarr[i-1]){
-        vidob['video']=i;}
+        vidob['video']=i;
+            break;
+        }
         else{
-            vidob['video']=0;}
+            vidob['video']=0;
+        }
     }
     
     vidob['start']=current_seconds-simuarr[vidob['video']-1];
@@ -473,7 +478,7 @@ function getVideo(PlayList,startTime)
 function Set_Watch_Video(VideoData,vidpar){
 $(document).ready(function()
 {
-    console.log(Schema);
+    //console.log(Schema);
     var play = VideoData[vidpar['video']]['link'];
     var startwhen=vidpar['start'];
     
@@ -493,10 +498,11 @@ $(document).ready(function()
 
 
 /* -------------------------------------------- PLAY PARAMETERS ----------------------------------------------*/
-var startTime="18:48:00";
+var startTime="19:58:00";
 
 PlaySimulate(PlayList,startTime);
 var vidpar=getVideo(PlayList,startTime);
+//console.log(vidpar);
 Set_Watch_Video(VideoData,vidpar);
 
 
@@ -509,11 +515,8 @@ function refresh_playid(PlayList,startTime,vidpar)
 {
     PlaySimulate(PlayList,startTime);
  var vidparloc=getVideo(PlayList,startTime);
-    if(vidpar['video']==vidparloc['video'])
+    if(vidpar['video']!=vidparloc['video'])
        {
-       
-       }
-       else{
        Set_Watch_Video(VideoData,vidparloc);
        vidpar=vidparloc;
        }
@@ -521,6 +524,6 @@ function refresh_playid(PlayList,startTime,vidpar)
 }
 
 
-var tsecloop = setInterval(refresh_playid(),3000);
+//var tsecloop = setInterval(function(){refresh_playid(PlayList,startTime,vidpar)};,3000);
 
 
