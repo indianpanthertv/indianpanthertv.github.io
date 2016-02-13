@@ -426,7 +426,7 @@ function PlaySimulate(PlayList,startTime){
      
         simupar=simupar+getSecondsDuration(VideoData[PlayList[i]]['duration']);
         simuarr[i]=simupar;
-        console.log(getDurationSeconds(simupar));
+        console.log(getDurationSeconds(simupar+startTime));
         
     }
     
