@@ -199,7 +199,7 @@ function getVideo(PlayList,startTime)
 }
 
 /* -------------------------------------------- PLAY PARAMETERS ----------------------------------------------*/
-var startTime="18:02:00";
+var startTime="18:48:00";
 
 PlaySimulate(PlayList,startTime);
 var vidpar=getVideo(PlayList,startTime);
@@ -234,7 +234,7 @@ $(document).ready(function()
     console.log(Schema);
     var play = VideoData[vidpar['video']]['link'];
     var startwhen=vidpar['start'];
-    var sdd=' <iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+play+'?autoplay=1&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&t='+startwhen+'&version=3" frameborder="0" allowfullscreen></iframe>';
+    var sdd=' <iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+play+'?controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&t='+startwhen+'&version=3" frameborder="0" allowfullscreen></iframe>';
     $("#INDIANPANTHERTV").html(
     
     sdd
