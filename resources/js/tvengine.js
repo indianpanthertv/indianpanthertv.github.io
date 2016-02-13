@@ -414,7 +414,7 @@ function PlaySimulate(PlayList,startTime){
     var endTimesec=getSecondsDuration(startTime)+PLduration(PlayList);
     
     var endTime=getDurationSeconds(endTimesec);
-    console.log(endTime + "is the ending time");
+    //console.log(endTime + "is the ending time");
     
     var simulength=PlayList.length;
     var simupar=0;
@@ -451,9 +451,14 @@ function GetSchedule(PlayList,startTime){
     {
      
         simupar=simupar+getSecondsDuration(VideoData[PlayList[i]]['duration']);
-        //simuarr[i]=simupar;
-        console.log(VideoData[PlayList[i]]['title']+'\n'+getDurationSeconds(simupar+getSecondsDuration(startTime)));
-        
+        simuarr[i]=simupar;
+        if(i==0)
+        {
+        console.log(VideoData[PlayList[i]]['title']+'\n From :'+getDurationSeconds(getSecondsDuration(startTime))+' TO :'+getDurationSeconds(simupar+getSecondsDuration(startTime)));
+        }
+        else{
+             console.log(VideoData[PlayList[i]]['title']+'\n From :'+getDurationSeconds(getSecondsDuration(startTime)+simuarr[i-1])+' TO :'+getDurationSeconds(simupar+getSecondsDuration(startTime)));
+        }
     }
     
 }
@@ -481,13 +486,18 @@ function getVideo(PlayList,startTime)
     var simulength=simuarr.length;
     var vidob={};
     var logi=0;
-    for(var i=1;i<simulength-1;i++)
+    for(var i=1;i<simulength;i++)
     {
         if(current_seconds<simuarr[i]&&current_seconds>simuarr[i-1]){
         vidob['video']=PlayList[i];
             logi=i;
             break;
         }
+        else if(current_seconds>simuarr[simulength-1])
+        {
+             break;
+        }
+       
         else{
             vidob['video']=PlayList[0];
         }
@@ -525,7 +535,7 @@ $(document).ready(function()
 
 
 /* -------------------------------------------- PLAY PARAMETERS ----------------------------------------------*/
-var startTime="20:45:00";
+var startTime="21:45:00";
 
 PlaySimulate(PlayList,startTime);
 var vidpar=getVideo(PlayList,startTime);
@@ -541,10 +551,10 @@ GetSchedule(PlayList,startTime);
 
 function refresh_playid(PlayList,startTime)
 {
-    console.log("running per 3 secs");
+   // console.log("running per 3 secs");
     PlaySimulate(PlayList,startTime);
  var vidparloc=getVideo(PlayList,startTime);
-    var retobj ={};
+   
     if(vidpar['video']!=vidparloc['video'])
        {
        Set_Watch_Video(VideoData,vidparloc);
