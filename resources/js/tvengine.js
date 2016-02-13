@@ -426,11 +426,35 @@ function PlaySimulate(PlayList,startTime){
      
         simupar=simupar+getSecondsDuration(VideoData[PlayList[i]]['duration']);
         simuarr[i]=simupar;
-        console.log(getDurationSeconds(simupar+getSecondsDuration(startTime)));
+       // console.log(getDurationSeconds(simupar+getSecondsDuration(startTime)));
         
     }
     
     return simuarr;
+    
+}
+
+
+function GetSchedule(PlayList,startTime){
+    
+    var endTimesec=getSecondsDuration(startTime)+PLduration(PlayList);
+    
+    var endTime=getDurationSeconds(endTimesec);
+    console.log(endTime + "is the ending time");
+    
+    var simulength=PlayList.length;
+    var simupar=0;
+    
+    var simuarr = Array(simulength);
+    
+    for(var i=0;i<simulength;i++)
+    {
+     
+        simupar=simupar+getSecondsDuration(VideoData[PlayList[i]]['duration']);
+        //simuarr[i]=simupar;
+        console.log(VideoData[PlayList[i]]['link']+'\n'+getDurationSeconds(simupar+getSecondsDuration(startTime)));
+        
+    }
     
 }
 
@@ -507,6 +531,7 @@ PlaySimulate(PlayList,startTime);
 var vidpar=getVideo(PlayList,startTime);
 //console.log(vidpar);
 Set_Watch_Video(VideoData,vidpar);
+GetSchedule(PlayList,startTime);
 
 
 
