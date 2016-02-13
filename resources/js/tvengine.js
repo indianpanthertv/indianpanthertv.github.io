@@ -509,7 +509,7 @@ function refresh_playid(PlayList,startTime,vidpar)
 {
     PlaySimulate(PlayList,startTime);
  var vidparloc=getVideo(PlayList,startTime);
-    if(vidpar['video']==vidparloc['video']
+    if(vidpar['video']==vidparloc['video'])
        {
        
        }
