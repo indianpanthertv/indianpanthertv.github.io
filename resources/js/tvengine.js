@@ -514,15 +514,16 @@ Set_Watch_Video(VideoData,vidpar);
 /*-----------------------------------------------------------------------------------------------------------*/
 
 
-function refresh_playid(PlayList,startTime,vidpar)
+function refresh_playid(PlayList,startTime)
 {
     console.log("running per 3 secs");
     PlaySimulate(PlayList,startTime);
  var vidparloc=getVideo(PlayList,startTime);
+    var retobj ={};
     if(vidpar['video']!=vidparloc['video'])
        {
        Set_Watch_Video(VideoData,vidparloc);
-       vidpar=vidparloc;
+           vidpar=vidparloc;
        }
     
 }
