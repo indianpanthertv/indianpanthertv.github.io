@@ -426,7 +426,7 @@ function PlaySimulate(PlayList,startTime){
      
         simupar=simupar+getSecondsDuration(VideoData[PlayList[i]]['duration']);
         simuarr[i]=simupar;
-        console.log(getDurationSeconds(simupar+startTime));
+        console.log(getDurationSeconds(simupar+getSecondsDuration(startTime)));
         
     }
     
@@ -448,9 +448,9 @@ function getVideo(PlayList,startTime)
     var prestime= hour+":"+minutes+":"+seconds;
     
     var pres_seconds=getSecondsDuration(prestime);
-    console.log(pres_seconds+"is pres_seconds");
+   // console.log(pres_seconds+"is pres_seconds");
     var start_seconds=getSecondsDuration(startTime);
-    console.log(startTime+"is startTime");
+    //console.log(startTime+"is startTime");
     var current_seconds=pres_seconds-start_seconds;
     
     var simuarr=PlaySimulate(PlayList,startTime);
@@ -495,7 +495,7 @@ $(document).ready(function()
     sdd
     
     );
-    console.log(startwhen);
+    //console.log(startwhen);
 });
 }
 
