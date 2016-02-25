@@ -522,16 +522,16 @@ $(document).ready(function()
     var play = VideoData[vidpar['video']]['link'];
     var startwhen=vidpar['start'];
     
-    var time=getDurationSeconds(startwhen);
+   // var time=getDurationSeconds(startwhen);
     
-    console.log(time);
+   // console.log(time);
     
     
     
-    var sdd=' <iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+play+'?autoplay=1&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&start='+startwhen+'" frameborder="0" allowfullscreen></iframe>';
+    var themainthing='<div> <iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+play+'?autoplay=1&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&start='+startwhen+'" frameborder="0" allowfullscreen></iframe></div>';
     $("#INDIANPANTHERTV").html(
     
-    sdd
+   themainthing
     
     );
     //console.log(startwhen);
