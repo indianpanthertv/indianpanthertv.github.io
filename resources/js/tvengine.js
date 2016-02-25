@@ -528,7 +528,7 @@ $(document).ready(function()
     
     
     
-    var themainthing='<div> <iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+play+'?autoplay=1&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&start='+startwhen+'" frameborder="0" allowfullscreen></iframe></div>';
+    var themainthing='<div width="100%" height="100%"> <iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+play+'?autoplay=1&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&start='+startwhen+'" frameborder="0" allowfullscreen></iframe></div>';
     $("#INDIANPANTHERTV").html(
     
    themainthing
